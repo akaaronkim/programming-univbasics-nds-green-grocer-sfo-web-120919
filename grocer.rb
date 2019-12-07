@@ -47,6 +47,35 @@ end
 end
 
 def apply_coupons(cart, coupons)
+  total = 0
+  while total < coupons.length
+    cart_item = find_item_by_name_in_collection(coupons[total][:item], cart)
+    coupon_item = "#{coupons[counter][:item]} W/COUPON"
+    cart_coupon = find_item_by_name_in_collection(coupon_item, cart)
+
+    if cart_item && cart_item[:count] >= coupons[total][:num]
+
+      if cart_coupon
+        cart_coupon[:count] += coupons[total][:num]
+        cart_item[:count] -= coupons[total][:num]
+      else
+        cart_coupon = {
+          :item => coupon_item,
+          :price => coupons[total][:cost] / coupons[total[:num],
+          :count => coupons[total][:num],
+          :clearance => cart_item[:clearance]
+        }
+        cart << cart_coupon
+        cart_item[:count] -= coupons[counter][:num]
+      end
+      
+    end
+    
+    total += 1
+
+  end
+
+  return cart
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
