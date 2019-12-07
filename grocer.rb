@@ -1,13 +1,13 @@
 require 'pp'
 
 def find_item_by_name_in_collection(name, collection)
-  item = 0
+  items = 0
 
-  while item < collection.length
-    if collection[item[:item]] == name
+  while items < collection.length
+    if collection[items][:item] == name
       return name
     end
-      item += 1
+      items += 1
   end
       return nil
   # Implement me first!
