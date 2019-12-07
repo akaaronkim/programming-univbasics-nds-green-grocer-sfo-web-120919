@@ -1,4 +1,11 @@
+require 'pp'
+
 def find_item_by_name_in_collection(name, collection)
+  collection.each do |item|
+    if name == item[:item]
+      return item 
+    else
+      return nil 
   # Implement me first!
   #
   # Consult README for inputs and outputs
