@@ -82,6 +82,19 @@ def apply_coupons(cart, coupons)
 end
 
 def apply_clearance(cart)
+  total = 0
+  while total < cart.length
+
+    if cart[total][:clearance]
+        cart[total][:price] = (cart[total][:price] - (cart[total][:price] * 0.2)).round(2)
+    end
+
+    total += 1
+
+  end
+
+  return cart
+
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
