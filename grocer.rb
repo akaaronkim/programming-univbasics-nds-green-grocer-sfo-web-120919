@@ -16,7 +16,30 @@ def find_item_by_name_in_collection(name, collection)
 end
 
 def consolidate_cart(cart)
+  new_arr = []
+  total = 0
 
+  while total < cart.length
+    new_item = find_item_by_name_in_collection(cart[total][:item], new_arr)
+
+    if new_item != nil
+      new_item[:count] += 1
+    else
+      new_item = {
+      :item => cart[total][:item],
+      :price => cart[total][:price],
+      :clearance => cart[total][:clearance],
+      :count => 1
+    }
+
+    new_arr << new_item
+
+  end
+
+  total += 1
+end
+
+  return new_arr
   # Consult README for inputs and outputs
   #
   # REMEMBER: This returns a new Array that represents the cart. Don't merely
